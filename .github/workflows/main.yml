@@ -13,4 +13,4 @@ jobs:
       with:
         server: ftp.andrewconl.in
         username: andrewconl.in
-        password: ${{ secrets.ftp_password }}
+        password: ${{ secrets.FTP_PASSWORD }}
