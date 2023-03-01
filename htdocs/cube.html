@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>andrew conlin</title>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+		<style>
+			body { margin: 0; }
+
+			.title {
+				font-family: 'DM Mono', monospace;
+				font-size: 20pt;
+				color: white;
+				text-align:left;
+				position: absolute; 
+				left:20px;
+				top:20px;
+			}
+
+			.main-text {
+				font-family: 'DM Mono', monospace;
+				font-size: 12pt;
+				color: white;
+				text-align:left;
+				position: absolute; 
+				left:20px;
+			}
+
+			.socials {
+				font-size: 12pt;
+				color: white;
+				text-align:left;
+				position: absolute; 
+				left:20px;
+			}
+
+			a {
+        		color: white;
+      		}
+
+			@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap');
+		</style>
+	</head>
+	<body>
+		<div class="title">
+            andrewconl.in
+        </div>
+		<div class="main-text" style="top:20%;">
+			hello.
+		</div>
+		<div class="main-text" style="top:30%;">
+			my name is andrew conlin.
+		</div>
+		<div class="main-text" style="top:40%;">
+			i am an <a href="https://linkedin.com" target="_blank">engineer</a> and <a href="http://andrewconlinphotography.co.uk" target="_blank">photographer</a>, based in glasgow.
+		</div>
+		<div class="main-text" style="top:50%;">
+			you can <a href="mailto:andrew@andrewconl.in">email me</a> or use my socials below.
+		</div>
+		<div class="main-text" style="top:60%;">
+			have fun playing with the cube.
+		</div>
+		<div class="socials" style="top:70%;">
+			<span>
+			<a href="https://twitter.com/andrwcnln" target="_blank"><i class="fab fa-twitter"></i></a>
+			<a href="https://instagram.com/conlinsta" target="_blank"><i class="fab fa-instagram"></i></a>
+			<a href="https://github.com/andrwcnln" target="_blank"><i class="fab fa-github"></i></a>
+			<a href="https://www.strava.com/athletes/57896512" target="_blank"><i class="fab fa-strava"></i></a>
+			<a href="https://open.spotify.com/user/1135508731?si=61zWbsqmT92LdT0JA5bAKw" target="_blank"><i class="fab fa-spotify"></i></a>
+			</span>
+		</div>
+		<script src="js/three.js"></script>
+		<script>
+			const scene = new THREE.Scene();
+			const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+			const renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			const geometry = new THREE.BoxGeometry();
+			const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+			const cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			camera.position.z = 5;
+			
+			var rbool = false;
+			var gbool = true;
+			var bbool = true;
+			
+			window.addEventListener('resize', onWindowResize, false);
+			
+			document.addEventListener('mousemove', onDocumentMouseMove, false);
+			document.addEventListener('mousedown', onDocumentStart, false);
+			document.addEventListener('mouseup', onDocumentStop, false);
+			var mouse = new THREE.Vector2();
+			var mouseMove;
+			
+			document.addEventListener('touchmove', onDocumentTouchMove, false);
+			document.addEventListener('touchstart', onDocumentStart, false);
+			document.addEventListener('touchend', onDocumentStop, false);
+			
+			var touchMove;
+			
+			function onDocumentStart(event) {
+				event.preventDefault();
+				mouseMove = true;
+				touchMove = true;
+				
+			}
+			
+			function onDocumentStop(event) {
+				event.preventDefault();
+				mouseMove = false;
+				touchMove = false;
+			}
+			
+			function onDocumentMouseMove(event) {
+				event.preventDefault();
+				if (mouseMove == true){
+					mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+					mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+				}
+			}
+			
+			function onDocumentTouchMove(event) {
+				event.preventDefault();
+				if (touchMove == true){
+					var touch = event.changedTouches[0];
+					mouse.x = (touch.pageX / window.innerWidth) * 2 - 1;
+					mouse.y = -(touch.pageY / window.innerHeight) * 2 + 1;
+				}
+			}
+			
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+			
+			function color_change(num) {
+				if (material.color.r > 0.99 || material.color.r < 0.01){
+					rbool = !rbool;
+				}
+
+				if (material.color.g > 0.99 || material.color.g < 0.01){
+					gbool = !gbool;
+				}
+				
+				if (material.color.b > 0.99 || material.color.b < 0.01){
+					bbool = !bbool;
+				}				
+				
+				if (rbool == true){
+					material.color.r += num;
+				}else{
+					material.color.r -= num;
+				}
+
+				if (gbool == true){
+					material.color.g += num;
+				}else{
+					material.color.g -= num;
+				}
+
+				if (bbool == true){
+					material.color.b += num;
+				}else{
+					material.color.b -= num;
+				}
+			}
+			
+			function mouse_color(x,y,z){
+				material.color.r = x;
+				material.color.g = y;
+				material.color.b = z;
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+				
+				if (mouseMove == true || touchMove == true){
+					cube.rotation.x = -mouse.y;
+					cube.rotation.y = mouse.x;
+				} else {
+					cube.rotation.x += 0.01;
+					cube.rotation.y += 0.01;
+				}
+				mouse_color(Math.abs(cube.rotation.x),Math.abs(cube.rotation.z),Math.abs(cube.rotation.y));
+
+				renderer.render( scene, camera );
+			};
+			
+
+			animate();
+		</script>
+	</body>
+</html>
