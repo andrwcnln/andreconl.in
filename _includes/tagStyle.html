@@ -1,0 +1,17 @@
+<style>
+    {% assign tags = page.tags %}
+    {% assign primaryTag = site.data.tags[tags.first] %}
+
+    code {
+        color: {{ primaryTag.backColor }};
+    }
+
+    pre {
+        color: {{ primaryTag.backColor }}
+    }
+
+    ::selection {
+        background-color: {{ primaryTag.backColor }};
+        color: {{ primaryTag.textColor }}
+    }
+</style>

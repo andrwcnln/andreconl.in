@@ -14,3 +14,4 @@ jobs:
         server: ftp.andrewconl.in
         username: andrewconl.in
         password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./_site/

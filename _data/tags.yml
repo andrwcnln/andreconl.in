@@ -1,0 +1,15 @@
+til:
+  backColor: gold
+  textColor: black
+review:
+  backColor: fuchsia
+  textColor: black
+thoughts:
+  backColor: green
+  textColor: black
+photo:
+  backColor: cornflowerblue
+  textColor: black
+poem:
+  backColor: purple
+  textColor: black

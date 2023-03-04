@@ -1,0 +1,7 @@
+- name: about
+  link: /index.html
+- name: blog
+  link: /blog.html
+- name: photos
+  link: http://andrewconlinphotography.co.uk
+

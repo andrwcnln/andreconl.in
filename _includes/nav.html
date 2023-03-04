@@ -1,0 +1,38 @@
+{% assign tags = page.tags %}
+{% assign primaryTag = site.data.tags[tags.first] %}
+
+<h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;">
+    {% if tags %}
+    <span style="color:{{primaryTag.textColor}};background-color:{{primaryTag.backColor}};">ac</span>
+    {% else %}
+    <span style="color:black;background-color:white;">ac</span>
+    {% endif %}
+</h1>
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col col-md-3">
+        <div class="row row-cols-1 g-0">
+            {% for item in site.data.nav %}
+            <div class="col">
+                <h4>
+                    <a href="{{ item.link }}" class="text-decoration-none"> {{ item.name }} </a>
+                </h4>
+            </div>
+            {% endfor %}
+            <div class="col gy-2">
+                <h4>
+                    <div>
+                        <span>
+                            {% for item in site.data.icons %}
+                            {% if item.icon != "letterboxd" %}
+                            <a href="{{ item.link }}" target="_blank"><i class="{{ item.icon }}"></i></a>
+                            {% else %}
+                            <a href="{{ item.link }}" target="_blank"><img class="letterboxd" src="/assets/images/letterboxd.png"></a>
+                            {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </h4>
+            </div>
+            <hr class="menu">
+        </div>
+    </div>

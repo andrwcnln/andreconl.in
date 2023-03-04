@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{% assign tags = page.tags %}
+
+<p style="font-family:Rubik Mono One;">
+    {{ page.date | date_to_string }} |
+    {% for tag in tags %}
+        {% assign currentTag = site.data.tags[tag] %}
+        <span style="background-color:{{currentTag.backColor}};color:{{currentTag.textColor}};">{{ tag }}</span> 
+    {% endfor %}
+</p>
+<hr>
+
+{{ content }}

@@ -1,0 +1,23 @@
+---
+layout: default
+title: latest posts
+---
+
+
+<hr>
+<ul style="list-style-type:none;margin:0;padding:0;">
+  {% for post in site.posts %}
+  {% assign tags = post.tags %}
+    <li>
+      <div style="font-family:Rubik Mono One;">
+        {{ post.date | date_to_string }} |
+        {% for tag in tags %}
+            {% assign currentTag = site.data.tags[tag] %}
+            <span style="background-color:{{currentTag.backColor}};color:{{currentTag.textColor}};">{{ tag }}</span> 
+        {% endfor %}
+      </div>
+      <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
