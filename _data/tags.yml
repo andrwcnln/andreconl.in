@@ -1,15 +1,12 @@
 til:
   backColor: gold
   textColor: black
-review:
-  backColor: fuchsia
-  textColor: black
 thoughts:
-  backColor: green
+  backColor: limegreen
   textColor: black
-photo:
-  backColor: cornflowerblue
-  textColor: black
-poem:
-  backColor: purple
+journal:
+  backColor: darkgreen
+  textColor: white
+quotes:
+  backColor: fuchsia
   textColor: black
