@@ -1,9 +1,9 @@
-{% assign tags = page.tags %}
-{% assign primaryTag = site.data.tags[tags.first] %}
+{% assign categories = page.categories %}
+{% assign primaryCategory = site.data.categories[categories.first] %}
 
 <h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;">
-    {% if tags %}
-    <span style="color:{{primaryTag.textColor}};background-color:{{primaryTag.backColor}};">ac</span>
+    {% if categories %}
+    <span style="color:{{primaryCategory.textColor}};background-color:{{primaryCategory.backColor}};">ac</span>
     {% else %}
     <span style="color:black;background-color:white;">ac</span>
     {% endif %}
