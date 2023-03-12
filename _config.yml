@@ -9,14 +9,14 @@ defaults:
       path: "_posts/blog"
       type: posts
     values:
-      permalink: blog/:year/:month/:day/:title
+      permalink: blog/:year/:month/:day/:title/
       layout: post
   # til
   - scope:
       path: "_posts/til"
       type: posts
     values:
-      permalink: til/:title
+      permalink: til/:title/
       category: til
       layout: til-post
 
