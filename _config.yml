@@ -1,0 +1,28 @@
+plugins:
+  - jekyll-archives
+
+permalink: pretty
+    
+defaults:
+  # blog
+  - scope:
+      path: "_posts/blog"
+      type: posts
+    values:
+      permalink: blog/:year/:month/:day/:title
+      layout: post
+  # til
+  - scope:
+      path: "_posts/til"
+      type: posts
+    values:
+      permalink: til/:title
+      category: til
+      layout: til-post
+
+jekyll-archives:
+  enabled: all
+  layout: default
+  permalinks:
+    category: "/blog/category/:name/"
+    tag: "/blog/tag/:name/"

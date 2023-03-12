@@ -1,7 +1,7 @@
 - name: about
-  link: /index.html
+  link: /
 - name: blog
-  link: /blog.html
+  link: /blog
 - name: photos↗
   link: http://andrewconlinphotography.co.uk
 

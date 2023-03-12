@@ -9,11 +9,11 @@ layout: default
 
 <p style="font-family:Rubik;font-weight:500;">
     <i class="fas fa-calendar"></i>&nbsp;{{ page.date | date_to_string }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<a class="text-decoration-none" style="color:{{category.textColor}}" href="/blog/category/{{ categories.first }}"><i class="fas fa-folder"></i>&nbsp;{{ categories.first }}</a>&nbsp;</span>
+    <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<a class="text-decoration-none" style="color:{{category.textColor}}" href="/til"><i class="fas fa-folder"></i>&nbsp;{{ categories.first }}</a>&nbsp;</span>
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <i class="fas fa-tag"></i> 
     {% for tag in tags %}
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="blog/tag/{{ tag }}">{{ tag }}</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="{{ site.url }}/blog/tag/{{ tag }}">{{ tag }}</a></span>
     {% if tag != tags.last %}
     ,
     {% endif %}
