@@ -2,6 +2,8 @@ plugins:
   - jekyll-archives
 
 permalink: pretty
+baseurl: "/andrewconl.in"
+url: "https://andrwcnln.github.io"
     
 defaults:
   # blog
