@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Running a Python script periodically in a Docker container using cron">
+    <meta property="og:image" content="https://andrewconl.in/assets/images/og-image-template.jpg">
+    <meta property="og:url" content="/til/running-python-in-cron-in-docker/">
+    <title>andrew conlin</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/default.css" rel="stylesheet">
+    <style>
+    
+    
+
+    code {
+        color: gold;
+    }
+
+    pre {
+        color: gold
+    }
+
+    ::selection {
+        background-color: gold;
+        color: black
+    }
+</style>
+</head>
+
+<body>
+    <div class="container text-start">
+        
+
+
+<h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;">
+    
+    <span style="color:black;background-color:gold;">ac</span>
+    
+</h1>
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col col-md-3">
+        <div class="row row-cols-1 g-0">
+            
+            <div class="col">
+                <h4>
+                    <a href="/" class="text-decoration-none"> about </a>
+                </h4>
+            </div>
+            
+            <div class="col">
+                <h4>
+                    <a href="/blog" class="text-decoration-none"> blog </a>
+                </h4>
+            </div>
+            
+            <div class="col">
+                <h4>
+                    <a href="http://andrewconlinphotography.co.uk" class="text-decoration-none"> photos↗ </a>
+                </h4>
+            </div>
+            
+            <div class="col gy-2">
+                <h4>
+                    <div>
+                        <span>
+                            
+                            
+                            <a href="https://twitter.com/andrwcnln" target="_blank"><i class="fab fa-twitter"></i></a>
+                            
+                            
+                            
+                            <a href="https://instagram.com/conlinsta" target="_blank"><i class="fab fa-instagram"></i></a>
+                            
+                            
+                            
+                            <a href="https://github.com/andrwcnln" target="_blank"><i class="fab fa-github"></i></a>
+                            
+                            
+                            
+                            <a href="https://www.strava.com/athletes/57896512" target="_blank"><i class="fab fa-strava"></i></a>
+                            
+                            
+                            
+                            <a href="https://open.spotify.com/user/1135508731?si=61zWbsqmT92LdT0JA5bAKw" target="_blank"><i class="fab fa-spotify"></i></a>
+                            
+                            
+                            
+                            <a href="https://letterboxd.com/andrewconlin/" target="_blank"><img class="letterboxd" src="/assets/images/letterboxd.png"></a>
+                            
+                            
+                            
+                            <a href="mailto:andrew@andrewconl.in" target="_blank"><i class="fas fa-envelope"></i></a>
+                            
+                            
+                        </span>
+                    </div>
+                </h4>
+            </div>
+            <hr class="menu">
+        </div>
+    </div>
+        <div class="col col-md-9">
+            <h1 style="font-weight: 500;">
+                Running a Python script periodically in a Docker container using cron
+            </h1>
+            
+
+
+
+
+<p style="font-family:Rubik;font-weight:500;">
+    <i class="fas fa-calendar"></i>&nbsp;19 Apr 2023&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <span style="background-color:gold;color:black;">&nbsp;<a class="text-decoration-none" style="color:black" href="/til"><i class="fas fa-folder"></i>&nbsp;til</a>&nbsp;</span>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <i class="fas fa-tag"></i> 
+    
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/cron">cron</a></span>
+    
+    ,
+    
+    
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/python">python</a></span>
+    
+    ,
+    
+    
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/docker">docker</a></span>
+    
+    ,
+    
+    
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/docker-compose">docker-compose</a></span>
+    
+    ,
+    
+    
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/kindle">kindle</a></span>
+    
+    
+</p>
+<hr>
+
+<p>Recently, my partner gave a great idea for utilising my old Kindle: generate a “newspaper” each morning from a bunch of RSS feeds, and email it to the Kindle using “Send-to-Kindle” feature (a blog post about this project is in the works).</p>
+
+<p>I loved this idea, and thought it would be no problem to get a Python script up and running periodically on my Raspberry Pi home server using <code class="language-plaintext highlighter-rouge">cron</code>. However, I ran into various issues along the way (some of which were not so easy to resolve), so I’m collating all the configuration changes I made in the hopes that it will be useful to someone one day. You can find the full repo for this project <a href="https://github.com/andrwcnln/watchman">here</a>, and I have also included my Dockerfile, docker-compose.yml and crontab at the end of this TIL.</p>
+
+<h2 id="1-double-check-the-user">1. Double check the user</h2>
+
+<p>A lot of problems with <code class="language-plaintext highlighter-rouge">cron</code> come down to user privileges. Each user has their own <code class="language-plaintext highlighter-rouge">crontab</code>, and then there is the system-wide <em>root</em> <code class="language-plaintext highlighter-rouge">crontab</code>. The first issue I ran into with creating a <code class="language-plaintext highlighter-rouge">cron</code> job inside a container was that Docker created the crontab as a non-root user. This issue presented itself to me when I tried to run the following command, to  list the current cronjobs in the Docker container:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose exec container-name crontab -l
+</code></pre></div></div>
+<p>This returned the following output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>no crontab for root
+</code></pre></div></div>
+<p>Now, it is not necessarily a problem to have non-root <code class="language-plaintext highlighter-rouge">cron</code> jobs, but just make absolutely certain that you are creating the jobs with the user you expect. For me, I wanted to run as <code class="language-plaintext highlighter-rouge">root</code>, so I added to following line to my docker-compose.yml:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user: root
+</code></pre></div></div>
+<p>Now, the <code class="language-plaintext highlighter-rouge">root</code> user will be used when building your Docker image and the created <code class="language-plaintext highlighter-rouge">crontab</code> will be where you expect.</p>
+
+<h2 id="2-missing-dependencies">2. Missing dependencies</h2>
+<p>When <code class="language-plaintext highlighter-rouge">cron</code> calls your Python script, you may run into issues with <code class="language-plaintext highlighter-rouge">ModuleNotFoundError</code> or <code class="language-plaintext highlighter-rouge">ImportError</code>, where Python cannot find your installed packages. This is because <code class="language-plaintext highlighter-rouge">cron</code> does not have access to your system environment variables, including the Python path. You can resolve most of these errors with imports by adding the <code class="language-plaintext highlighter-rouge">PYTHONPATH</code> environment variable to your <code class="language-plaintext highlighter-rouge">crontab</code>. This should be the path to your <code class="language-plaintext highlighter-rouge">site-packages</code> folder, something like this:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PYTHONPATH=/usr/bin/local/python3
+</code></pre></div></div>
+<p>You may also need to add a shebang (<code class="language-plaintext highlighter-rouge">#!</code>) to your Python script to direct <code class="language-plaintext highlighter-rouge">cron</code> to the correct version. You can find the Python location with one of the following commands:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>which python
+which py
+which python3
+</code></pre></div></div>
+<p><em>NOTE</em>: These commands must be performed in your Docker container when it is up and running. In <code class="language-plaintext highlighter-rouge">docker-compose</code> syntax this would be the following (with the name of your container instead of <code class="language-plaintext highlighter-rouge">container-name</code>):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose exec container-name which python3
+</code></pre></div></div>
+<p>You can then add this to the top of your Python script, as follows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/bin/local/python3
+</code></pre></div></div>
+<h2 id="3-still-missing-dependecencies">3. Still missing dependecencies</h2>
+<p>Some modules will still run into errors even when the PYTHONPATH variable has been set. In particular, I ran into problems with <code class="language-plaintext highlighter-rouge">reportlab</code> and <code class="language-plaintext highlighter-rouge">Pillow/PIL</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ImportError: cannot import name '_imaging' from 'PIL'
+</code></pre></div></div>
+<p>This was solved by adding the system PATH to the <code class="language-plaintext highlighter-rouge">crontab</code> as well. The system path is included in the default <code class="language-plaintext highlighter-rouge">crontab</code> that is created when you first run <code class="language-plaintext highlighter-rouge">crontab -e</code>:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</code></pre></div></div>
+<p>Therefore, it is a good idea to include it if you are making a new <code class="language-plaintext highlighter-rouge">crontab</code> to make sure <code class="language-plaintext highlighter-rouge">cron</code> can find everything it needs to.</p>
+
+<h2 id="4-check-relative-paths-in-python">4. Check relative paths in Python</h2>
+<p>By default, <code class="language-plaintext highlighter-rouge">cron</code> runs from the default root path. Therefore, both your call to Python in your <code class="language-plaintext highlighter-rouge">crontab</code> and the filepaths within Python should either be relative to <code class="language-plaintext highlighter-rouge">root</code> (i.e <code class="language-plaintext highlighter-rouge">/main.py</code> rather than <code class="language-plaintext highlighter-rouge">main.py</code>) or just use full paths instead.</p>
+
+<h2 id="5-failed-to-build-wheel-and-related-errors">5. “Failed to build wheel” and related errors</h2>
+<p>This error is related to Python inside a Docker container rather than <code class="language-plaintext highlighter-rouge">cron</code>. However, someone might still find it useful. When you install your <code class="language-plaintext highlighter-rouge">requirements.txt</code>, you may encounter errors such as</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>legacy-install-failure
+error: command '/usr/bin/gcc' failed with exit code 1
+fatal error: Python.h: No such file or directory
+</code></pre></div></div>
+<p>I was able to resolve these by adding <code class="language-plaintext highlighter-rouge">python3-dev</code>, <code class="language-plaintext highlighter-rouge">wheel</code> and <code class="language-plaintext highlighter-rouge">Cmake</code> to my <code class="language-plaintext highlighter-rouge">requirements.txt</code>. These are sometimes required when packages include other binaries or need to compile other code when installed.</p>
+
+<h2 id="6-other-useful-tips">6. Other useful tips</h2>
+<ul>
+  <li><a href="crontab.guru">crontab.guru</a> is a great resource for checking <code class="language-plaintext highlighter-rouge">cron</code> syntax</li>
+  <li>Installing vim/nano in your Docker container to make the debugging stage easier. This is especially useful for changing your crontab to run much more frequently, or adding debugging messages etc., when the container is up.</li>
+</ul>
+
+<p>I hope this helped you resolve some errors! I’ve included my Dockerfile, docker-compose.yml and crontab below if you want to set up a similar project or adjust your own files. The full repo is also available <a href="https://github.com/andrwcnln/watchman">here</a>.</p>
+
+<p>Dockerfile:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM python:3
+
+COPY . .
+RUN python3.11 -m pip install --no-cache-dir -r requirements.txt
+
+RUN touch /var/log/cron.log
+
+RUN apt-get update \  
+&amp;&amp; apt-get install cron -y
+
+RUN chmod +x main.py
+
+RUN crontab crontab 
+
+CMD cron -f
+</code></pre></div></div>
+<p>docker-compose.yml:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "2.4"
+
+services:
+  watchman:
+    platform: "linux/arm64/v8"
+    image: watchman:latest
+    container_name: watchman
+    restart: always
+    user: root
+    build:
+      context: build
+      dockerfile: Dockerfile
+</code></pre></div></div>
+<p>crontab:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PYTHONPATH=/usr/bin/local/python3
+15 7 * * * python3 /main.py &gt;&gt; /var/log/cron.log 2&gt;&amp;1
+
+</code></pre></div></div>
+
+
+            <br>
+            <br>
+        </div>
+    </div>
+
+</body>
+
+</html>
