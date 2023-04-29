@@ -1,12 +1,12 @@
 til:
-  backColor: #eedd00
+  backColor: "#ed0"
   textColor: black
 thoughts:
-  backColor: #44dd88
+  backColor: "#4d8"
   textColor: black
 quotes:
-  backColor: #cc6666
+  backColor: "#c66"
   textColor: black
 links:
-  backColor: #3366bb
+  backColor: "#36b"
   textColor: white
