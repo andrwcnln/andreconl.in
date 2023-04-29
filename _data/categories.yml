@@ -1,12 +1,12 @@
 til:
-  backColor: gold
+  backColor: #ed0
   textColor: black
 thoughts:
-  backColor: limegreen
+  backColor: #4d8
   textColor: black
-journal:
-  backColor: darkgreen
-  textColor: white
 quotes:
-  backColor: fuchsia
+  backColor: #c66
   textColor: black
+links:
+  backColor: #36b
+  textColor: white
