@@ -73,7 +73,7 @@ fatal error: Python.h: No such file or directory
 I was able to resolve these by adding `python3-dev`, `wheel` and `Cmake` to my `requirements.txt`. These are sometimes required when packages include other binaries or need to compile other code when installed.
 
 ## 6. Other useful tips
-- [crontab.guru](crontab.guru) is a great resource for checking `cron` syntax
+- [crontab.guru](https://crontab.guru) is a great resource for checking `cron` syntax
 - Installing vim/nano in your Docker container to make the debugging stage easier. This is especially useful for changing your crontab to run much more frequently, or adding debugging messages etc., when the container is up.
 
 I hope this helped you resolve some errors! I've included my Dockerfile, docker-compose.yml and crontab below if you want to set up a similar project or adjust your own files. The full repo is also available [here](https://github.com/andrwcnln/watchman).

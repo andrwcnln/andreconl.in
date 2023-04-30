@@ -1,0 +1,16 @@
+{% assign category = site.data.categories[include.a] %}
+
+    <style>
+        code {
+            color: {{ category.backColor }};
+        }
+
+        pre {
+            color: {{ category.backColor }}
+        }
+
+        ::selection {
+            background-color: {{ category.backColor }};
+            color: {{ category.textColor }}
+        }
+    </style>

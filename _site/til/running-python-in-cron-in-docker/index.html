@@ -8,41 +8,39 @@
     <meta property="og:image" content="https://andrewconl.in/assets/images/og-image-template.jpg">
     <meta property="og:url" content="/til/running-python-in-cron-in-docker/">
     <title>andrew conlin</title>
-    <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/default.css" rel="stylesheet">
+    
+
     <style>
-    
-    
+        code {
+            color: #ed0;
+        }
 
-    code {
-        color: #ed0;
-    }
+        pre {
+            color: #ed0
+        }
 
-    pre {
-        color: #ed0
-    }
-
-    ::selection {
-        background-color: #ed0;
-        color: black
-    }
-</style>
+        ::selection {
+            background-color: #ed0;
+            color: black
+        }
+    </style>
 </head>
 
 <body>
     <div class="container text-start">
         
 
-
-<h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;">
+<h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;" id="logo">
     
     <span style="color:black;background-color:#ed0;">ac</span>
     
 </h1>
 <div class="row row-cols-1 row-cols-md-2">
     <div class="col col-md-3">
-        <div class="row row-cols-1 g-0">
+        <div class="row row-cols-1 g-0" id="nav">
             
             <div class="col">
                 <h4>
@@ -68,23 +66,23 @@
                         <span>
                             
                             
-                            <a href="https://twitter.com/andrwcnln" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a rel="me" href="https://mastodon.scot/@andrwcnln" target="_blank"><i class="fab fa-mastodon"></i></a>
                             
                             
                             
-                            <a href="https://instagram.com/conlinsta" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a rel="me" href="https://instagram.com/conlinsta" target="_blank"><i class="fab fa-instagram"></i></a>
                             
                             
                             
-                            <a href="https://github.com/andrwcnln" target="_blank"><i class="fab fa-github"></i></a>
+                            <a rel="me" href="https://github.com/andrwcnln" target="_blank"><i class="fab fa-github"></i></a>
                             
                             
                             
-                            <a href="https://www.strava.com/athletes/57896512" target="_blank"><i class="fab fa-strava"></i></a>
+                            <a rel="me" href="https://www.strava.com/athletes/57896512" target="_blank"><i class="fab fa-strava"></i></a>
                             
                             
                             
-                            <a href="https://open.spotify.com/user/1135508731?si=61zWbsqmT92LdT0JA5bAKw" target="_blank"><i class="fab fa-spotify"></i></a>
+                            <a rel="me" href="https://open.spotify.com/user/1135508731?si=61zWbsqmT92LdT0JA5bAKw" target="_blank"><i class="fab fa-spotify"></i></a>
                             
                             
                             
@@ -92,7 +90,7 @@
                             
                             
                             
-                            <a href="mailto:andrew@andrewconl.in" target="_blank"><i class="fas fa-envelope"></i></a>
+                            <a rel="me" href="mailto:andrew@andrewconl.in" target="_blank"><i class="fas fa-envelope"></i></a>
                             
                             
                         </span>
@@ -113,31 +111,31 @@
 
 <p style="font-family:Rubik;font-weight:500;">
     <i class="fas fa-calendar"></i>&nbsp;19 Apr 2023&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="background-color:#ed0;color:black;">&nbsp;<a class="text-decoration-none" style="color:black" href="/til"><i class="fas fa-folder"></i>&nbsp;til</a>&nbsp;</span>
+    <span style="background-color:#ed0;color:black;">&nbsp;<a class="text-decoration-none" style="color:black" href="/blog/category/til"><i class="fas fa-folder"></i>&nbsp;til</a>&nbsp;</span>
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <i class="fas fa-tag"></i> 
     
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/cron">cron</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="/blog/tag/cron">cron</a></span>
     
     ,
     
     
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/python">python</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="/blog/tag/python">python</a></span>
     
     ,
     
     
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/docker">docker</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="/blog/tag/docker">docker</a></span>
     
     ,
     
     
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/docker-compose">docker-compose</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="/blog/tag/docker-compose">docker-compose</a></span>
     
     ,
     
     
-    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="http://localhost:4000/blog/tag/kindle">kindle</a></span>
+    <span style="background-color:#171717;color:white;font-family:Rubik;padding:3px;border-radius:10px;"><a class="text-decoration-none" href="/blog/tag/kindle">kindle</a></span>
     
     
 </p>
@@ -197,7 +195,7 @@ fatal error: Python.h: No such file or directory
 
 <h2 id="6-other-useful-tips">6. Other useful tips</h2>
 <ul>
-  <li><a href="crontab.guru">crontab.guru</a> is a great resource for checking <code class="language-plaintext highlighter-rouge">cron</code> syntax</li>
+  <li><a href="https://crontab.guru">crontab.guru</a> is a great resource for checking <code class="language-plaintext highlighter-rouge">cron</code> syntax</li>
   <li>Installing vim/nano in your Docker container to make the debugging stage easier. This is especially useful for changing your crontab to run much more frequently, or adding debugging messages etc., when the container is up.</li>
 </ul>
 

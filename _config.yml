@@ -2,7 +2,7 @@ plugins:
   - jekyll-archives
 
 permalink: pretty
-baseurl: "/andrewconl.in"
+baseurl: "/"
 url: "https://andrwcnln.github.io"
     
 defaults:
@@ -20,11 +20,15 @@ defaults:
     values:
       permalink: til/:title/
       category: til
-      layout: til-post
+      layout: post
 
 jekyll-archives:
-  enabled: all
-  layout: default
+  enabled:
+  - categories
+  - tags
+  layouts: 
+    category: category
+    tag: tag
   permalinks:
     category: "/blog/category/:name/"
     tag: "/blog/tag/:name/"
