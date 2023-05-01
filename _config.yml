@@ -1,8 +1,13 @@
 plugins:
   - jekyll-archives
+  - liquid_reading_time
+  - liquid_pluralize
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
 
 permalink: pretty
-baseurl: "/"
+baseurl: "/andrewconl.in"
 url: "https://andrwcnln.github.io"
     
 defaults:
@@ -20,7 +25,7 @@ defaults:
     values:
       permalink: til/:title/
       category: til
-      layout: post
+      layout: til-post
 
 jekyll-archives:
   enabled:

@@ -2,8 +2,6 @@
 layout: default
 ---
 
-{% capture time %}{{ content | reading_time }}{% endcapture %}
-
 {% assign categories = page.categories %}
 {% assign category = site.data.categories[categories.first] %}
 
@@ -14,7 +12,7 @@ layout: default
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <i class="fas fa-clock"></i>&nbsp;{{ content | reading_time | pluralize: "minute" }}
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<a class="text-decoration-none" style="color:{{category.textColor}}" href="/blog/category/{{ categories.first }}"><i class="fas fa-folder"></i>&nbsp;{{ categories.first }}</a>&nbsp;</span>
+    <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<a class="text-decoration-none" style="color:{{category.textColor}}" href="/til/"><i class="fas fa-folder"></i>&nbsp;{{ categories.first }}</a>&nbsp;</span>
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <i class="fas fa-tag"></i> 
     {% for tag in tags %}
