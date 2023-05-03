@@ -12,3 +12,5 @@
   icon: letterboxd
 - link: mailto:andrew@andrewconl.in
   icon: fas fa-envelope
+- link: /feed.xml
+  icon: fas fa-square-rss

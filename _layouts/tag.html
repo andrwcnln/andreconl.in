@@ -18,10 +18,8 @@
   <div class="container text-start">
     {% include nav.html a=page.title %}
     <div class="col col-md-9">
-      {% assign categories = page.title %}
-      {% assign category = site.data.categories[categories] %}
       <h1 style="font-weight: 500;">
-        <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<i class="fas fa-folder"></i>&nbsp;{{ page.title }}&nbsp;</span>
+        <span style="font-size: 30px;"><i class="fas fa-tag"></i></span>&nbsp;{{ page.title }}
       </h1>
       <hr>
       <ul style="list-style-type:none;margin:0;padding:0;">

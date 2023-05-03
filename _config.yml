@@ -7,8 +7,10 @@ plugins:
   - jekyll-feed
 
 permalink: pretty
-baseurl: "/andrewconl.in"
+baseurl: "/"
 url: "https://andrwcnln.github.io"
+
+author: Andrew Conlin
     
 defaults:
   # blog
@@ -37,3 +39,7 @@ jekyll-archives:
   permalinks:
     category: "/blog/category/:name/"
     tag: "/blog/tag/:name/"
+
+feed:
+  categories:
+  - til

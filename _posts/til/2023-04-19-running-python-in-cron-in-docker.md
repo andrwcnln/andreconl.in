@@ -49,7 +49,7 @@ You can then add this to the top of your Python script, as follows:
 ```
 #!/usr/bin/local/python3
 ```
-## 3. Still missing dependecencies
+## 3. Still missing dependencies
 Some modules will still run into errors even when the PYTHONPATH variable has been set. In particular, I ran into problems with `reportlab` and `Pillow/PIL`:
 ```
 ImportError: cannot import name '_imaging' from 'PIL'
