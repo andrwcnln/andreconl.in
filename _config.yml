@@ -29,17 +29,5 @@ defaults:
       category: til
       layout: post
 
-jekyll-archives:
-  enabled:
-  - categories
-  - tags
-  layouts: 
-    category: category
-    tag: tag
-  permalinks:
-    category: "/blog/category/:name/"
-    tag: "/blog/tag/:name/"
-
 feed:
-  categories:
-  - til
+  category: til

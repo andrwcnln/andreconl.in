@@ -1,13 +1,6 @@
 ---
 title: A measure of how easily thoughts can be translated to action
-categories:
-- thoughts
-tags:
-- html
-- css
-- bootstrap
-- jekyll
-- webdev
+category: blog
 ---
 
 Recently, I've been using multiple different languages and frameworks (both at work and personally) and I've been thinking about why I prefer some over others. Ultimately, I think it comes down to this:
