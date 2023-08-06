@@ -27,7 +27,7 @@ defaults:
     values:
       permalink: til/:title/
       category: til
-      layout: til-post
+      layout: post
 
 jekyll-archives:
   enabled:
