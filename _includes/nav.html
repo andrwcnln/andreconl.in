@@ -1,11 +1,5 @@
-{% assign primaryCategory = site.data.categories[include.a] %}
-
 <h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;" id="logo">
-    {% if primaryCategory %}
-    <span style="color:{{primaryCategory.textColor}};background-color:{{primaryCategory.backColor}};">ac</span>
-    {% else %}
     <span style="color:black;background-color:white;">ac</span>
-    {% endif %}
 </h1>
 <div class="row row-cols-1 row-cols-md-2">
     <div class="col col-md-3">
