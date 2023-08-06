@@ -19,23 +19,23 @@ hr.menu {
 }
 
 a {
-    color: white;
+    color: #ebdbb2;
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: #282828;
+    color: #ebdbb2;
     font-family: "Rubik";
     min-height: 100vh;
 }
 
 code {
-    color: white;
+    color: #ebdbb2;
 }
 
 pre {
-    color: white;
-    background-color: #171717;
+    color: #ebdbb2;
+    background-color: #504945;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     white-space: pre-wrap;
@@ -67,7 +67,6 @@ img.letterboxd {
 }
 
 ::selection {
-    background-color: white;
-    color: black;
+    background-color: #ebdbb2;
+    color: #282828;
 }
-
