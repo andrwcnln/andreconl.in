@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+h1.logo {
+    height: 90px;
+}
 
 hr {
     border: none;
     height: 3px;
-    background-color: #171717;
+    background-color: #a89984;
     opacity: 100%;
 }
 
@@ -19,23 +24,23 @@ hr.menu {
 }
 
 a {
-    color: white;
+    color: #ebdbb2;
 }
 
 body {
-    background-color: black;
-    color: white;
-    font-family: "Rubik";
+    background-color: #282828;
+    color: #ebdbb2;
+    font-family: "Fira Code";
     min-height: 100vh;
 }
 
 code {
-    color: white;
+    color: #ebdbb2;
 }
 
 pre {
-    color: white;
-    background-color: #171717;
+    color: #ebdbb2;
+    background-color: #504945;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     white-space: pre-wrap;
@@ -67,7 +72,6 @@ img.letterboxd {
 }
 
 ::selection {
-    background-color: white;
-    color: black;
+    background-color: #ebdbb2;
+    color: #282828;
 }
-

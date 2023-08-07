@@ -1,13 +1,6 @@
 ---
 title: Running a Python script periodically in a Docker container using cron
-categories:
-- til
-tags:
-- cron
-- python
-- docker
-- docker-compose
-- kindle
+category: til
 ---
 
 Recently, my partner gave a great idea for utilising my old Kindle: generate a "newspaper" each morning from a bunch of RSS feeds, and email it to the Kindle using "Send-to-Kindle" feature (a blog post about this project is in the works).

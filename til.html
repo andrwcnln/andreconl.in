@@ -1,24 +1,20 @@
 ---
 layout: default
-title: latest tils <span style="font-size:20px;"><a href="/feed/til.xml"><i class="fas fa-rss-square"></i></a></span>
+title: LATEST TILS <span style="font-size:20px;"><a href="/feed/til.xml"><i class="fas fa-rss-square"></i></a></span>
 subtitle: my collection of tils (today-i-learned). i use this mainly to collect solutions to weird errors i have faced, and detail the little projects that i work on. this has its own atom feed (above) as they are typically very different from my other posts. all tils are blog posts but not all blog posts are tils.
 permalink: /til/
-categories:
-- til
 ---
 
 
 <hr>
 <ul style="list-style-type:none;margin:0;padding:0;">
   {% for post in site.posts %}
-  {% assign categories = post.categories %}
-  {% assign category = site.data.categories[categories.first] %}
-  {% if categories.first == 'til' %}
+  {% assign category = post.category %}
+  {% if category == 'til' %}
     <li>
       <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-      <div style="font-family:Rubik;font-weight:500;">
-        <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <span style="background-color:{{category.backColor}};color:{{category.textColor}};">&nbsp;<i class="fas fa-folder"></i>&nbsp;{{ categories.first }}&nbsp;</span>
+      <div style="font-family:Fira Code;font-weight:500;">
+        <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}
       </div>
       {{ post.content | strip_html | truncatewords: 30 }}
       <br>
