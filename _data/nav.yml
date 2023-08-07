@@ -1,11 +1,11 @@
-- name: about
+- name: ABOUT
   link: /
-- name: blog
+- name: BLOG
   link: /blog
-- name: til
+- name: TIL
   link: /til
-- name: projects
+- name: PROJECTS
   link: /projects
-- name: photos↗
+- name: PHOTOS↗
   link: http://andrewconlinphotography.co.uk
 

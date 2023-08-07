@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<p style="font-family:Rubik;font-weight:500;">
+<p style="font-family:Fira Code;font-weight:500;">
     <i class="fas fa-calendar"></i>&nbsp;{{ page.date | date_to_string }}
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    |
     <i class="fas fa-clock"></i>&nbsp;{{ content | reading_time | pluralize: "minute" }}
 </p>
 <hr>

@@ -1,9 +1,9 @@
-<h1 class="display-3" style="font-weight:700;position:sticky;top:0;backdrop-filter:blur(10px);z-index:1000;" id="logo">
-    <span style="color:#282828;background-color:#ebdbb2;">ac</span>
-</h1>
 <div class="row row-cols-1 row-cols-md-2">
     <div class="col col-md-3">
-        <div class="row row-cols-1 g-0" id="nav">
+        <div class="row row-cols-1 g-0" id="nav" style="position:sticky;top:0px;">
+            <h1 class="display-3 logo" style="font-weight:700;" id="logo">
+                <span style="color:#282828;background-color:#ebdbb2;">ac</span>
+            </h1>
             {% for item in site.data.nav %}
             <div class="col">
                 <h4>
@@ -11,7 +11,7 @@
                 </h4>
             </div>
             {% endfor %}
-            <div class="col gy-2">
+            <div class="col gy-2" style="font-family: Arial, Helvetica, sans-serif;">
                 <h4>
                     <div>
                         <span>

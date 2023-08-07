@@ -1,6 +1,6 @@
 ---
 layout: default
-title: latest posts <span style="font-size:20px;"><a href="/feed.xml"><i class="fas fa-rss-square"></i></a></span>
+title: LATEST POSTS <span style="font-size:20px;"><a href="/feed.xml"><i class="fas fa-rss-square"></i></a></span>
 subtitle: all the posts, in reverse chronological. there is an atom feed above.
 permalink: /blog/
 ---
@@ -13,7 +13,7 @@ permalink: /blog/
   {% if category == 'blog' %}
     <li>
       <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-      <div style="font-family:Rubik;font-weight:500;">
+      <div style="font-family:Fira Code;font-weight:500;">
         <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}
       </div>
       {{ post.content | strip_html | truncatewords: 30 }}
