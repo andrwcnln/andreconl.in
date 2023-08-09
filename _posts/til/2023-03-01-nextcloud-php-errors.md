@@ -1,12 +1,6 @@
 ---
 title: Fixing php errors in a Nextcloud docker-compose configuration
-categories:
-- til
-tags:
-- php
-- nextcloud
-- docker
-- docker-compose
+category: til
 ---
 
 I was trying to rescan the files in my Nextcloud server (running on Raspberry Pi 4 with DietPi), and kept running into some weird `php` errors.

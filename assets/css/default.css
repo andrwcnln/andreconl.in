@@ -2,10 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-h1.logo {
-    height: 90px;
-}
-
 hr {
     border: none;
     height: 3px;
@@ -23,15 +19,16 @@ hr.menu {
     }
 }
 
-a {
-    color: #ebdbb2;
+body {
+    background-color: #008080;
+    color: black;
+    font-family: "monospace";
+    min-height: 100vh;
 }
 
-body {
-    background-color: #282828;
-    color: #ebdbb2;
-    font-family: "Fira Code";
-    min-height: 100vh;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 code {
