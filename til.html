@@ -13,7 +13,7 @@ permalink: /til/
   {% if category == 'til' %}
     <li>
       <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-      <div style="font-family:Fira Code;font-weight:500;">
+      <div style="font-family:Rubik;font-style: italic;">
         <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}
       </div>
       {{ post.content | strip_html | truncatewords: 30 }}

@@ -1,21 +1,25 @@
 ---
 layout: default
-title: about me
+title: latest posts <span style="font-size:20px;"><a href="/feed.xml"><i class="fas fa-rss-square"></i></a></span>
+subtitle: all the posts, in reverse chronological. there is an atom feed above.
 permalink: /
 ---
 
+
 <hr>
-<img src="/assets/images/me.jpg">
-<br>
-Hi! My name is Andrew Conlin. I am a <a href="https://www.linkedin.com/in/andrew-conlin-61320a257/" target="_blank">software engineer</a> and <a href="http://andrewconlinphotography.co.uk" target="_blank">photographer</a>, currently based in Cambridge, England.
-<br>
-<br>
-My main hobbies are film photography and running. I love <a href="https://letterboxd.com/andrewconlin/">watching movies</a>, especially in the cinema. I love post-punk, dreampop and experimental hip hop. I love drinking good coffee, good beer and good whisky. I am also a passionate self-hoster, and like to think that I'm at least somewhat privacy conscious.  
-<br>
-<br>
-I mainly use this site as a space for my blog, where I post interesting things I've found, and some of my (not so interesting) thoughts. Inspired by <a href="https://til.simonwillison.net/">Simon Willison</a>, I also post my TIL series here. Any time I run into a weird error while programming, I post the full error message and the fix that I found, to hopefully help someone down the line.
-<br>
-<br>
-<h1> contact </h1>
-<hr>
-You can <a href="mailto:andrew@andrewconl.in">email me</a>, or use any of the socials in the nav menu.
+<ul style="list-style-type:none;margin:0;padding:0;">
+  {% for post in site.posts %}
+  {% assign category = post.category %}
+  {% if category == 'blog' %}
+    <li>
+      <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+      <div style="font-style: italic;">
+        <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}
+      </div>
+      {{ post.content | strip_html | truncatewords: 30 }}
+      <br>
+      <br>
+    </li>
+  {% endif %}
+  {% endfor %}
+</ul>

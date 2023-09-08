@@ -2,12 +2,12 @@
     <div class="col col-md-3">
         <div class="row row-cols-1 g-0" id="nav" style="position:sticky;top:0px;">
             <h1 class="display-3 logo" style="font-weight:700;" id="logo">
-                <span style="color:#282828;background-color:#ebdbb2;">ac</span>
+                <span style="color:black;background-color:gold;">ac</span>
             </h1>
             {% for item in site.data.nav %}
             <div class="col">
                 <h4>
-                    <a href="{{ item.link }}" class="text-decoration-none"> {{ item.name }} </a>
+                    <a href="{{ item.link }}" class="text-decoration-none" style="color: white;"> {{ item.name }} </a>
                 </h4>
             </div>
             {% endfor %}
@@ -17,7 +17,7 @@
                         <span>
                             {% for item in site.data.icons %}
                             {% if item.icon != "letterboxd" %}
-                            <a rel="me" href="{{ item.link }}" target="_blank"><i class="{{ item.icon }}"></i></a>
+                            <a rel="me" href="{{ item.link }}" target="_blank"><i class="{{ item.icon }}" style="color: white;"></i></a>
                             {% else %}
                             <a href="{{ item.link }}" target="_blank"><img class="letterboxd" src="/assets/images/letterboxd.png"></a>
                             {% endif %}

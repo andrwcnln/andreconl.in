@@ -1,11 +1,6 @@
 ---
 title: Links aren't performances
-categories:
-- links
-tags:
-- copyright
-- law
-- pluralistic
+category: blog
 ---
 _"For starters, it finds that publishing a link can be a "performance" of a copyrighted work, which meant that when Linkletter linked to the world-viewable Youtube files that Proctorio had posted, he infringed on copyright._
 

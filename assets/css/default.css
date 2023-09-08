@@ -2,14 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-h1.logo {
-    height: 90px;
-}
-
 hr {
     border: none;
     height: 3px;
-    background-color: #a89984;
+    background-color: #282828;
     opacity: 100%;
 }
 
@@ -23,24 +19,35 @@ hr.menu {
     }
 }
 
+div.content {
+    position: relative;
+    top: 90px;
+}
+
+@media (max-width: 768px) {
+    div.content {
+        top: 0px;
+    }
+}
+
 a {
-    color: #ebdbb2;
+    color: gold;
 }
 
 body {
-    background-color: #282828;
-    color: #ebdbb2;
+    background-color: black;
+    color: white;
     font-family: "Rubik";
     min-height: 100vh;
 }
 
 code {
-    color: #ebdbb2;
+    color: gold;
 }
 
 pre {
-    color: #ebdbb2;
-    background-color: #504945;
+    color: gold;
+    background-color: #282828;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     white-space: pre-wrap;
@@ -72,6 +79,6 @@ img.letterboxd {
 }
 
 ::selection {
-    background-color: #ebdbb2;
-    color: #282828;
+    background-color: gold;
+    color: black;
 }
