@@ -30,4 +30,6 @@ defaults:
       layout: post
 
 feed:
-  category: til
+  categories: 
+    - blog
+    - til

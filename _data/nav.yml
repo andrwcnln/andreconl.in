@@ -1,9 +1,13 @@
 - name: blog
   link: /
+  icon: book
 - name: til
   link: /til
+  icon: globe
 - name: projects
   link: /projects
+  icon: computer
 - name: photos↗
   link: http://andrewconlinphotography.co.uk
+  icon: film
 

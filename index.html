@@ -1,6 +1,6 @@
 ---
 layout: default
-title: latest posts <span style="font-size:20px;"><a href="/feed.xml"><i class="fas fa-rss-square"></i></a></span>
+title: latest posts <span style="font-size:20px;"><a href="/feed/blog.xml"><i class="fas fa-rss-square"></i></a></span>
 subtitle: all the posts, in reverse chronological. there is an atom feed above.
 permalink: /
 ---
@@ -14,7 +14,7 @@ permalink: /
     <li>
       <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
       <div style="font-style: italic;">
-        <i class="fas fa-calendar"></i>&nbsp;{{ post.date | date_to_string }}
+        <img src="/assets/images/write.ico" style="display: inline;height: 20px;width: 20px;">&nbsp;{{ post.date | date_to_string }}
       </div>
       {{ post.content | strip_html | truncatewords: 30 }}
       <br>
