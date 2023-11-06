@@ -1,6 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@font-face {
+    font-family: "Geist";
+    src:
+        local("Geist"),
+        url("../fonts/Geist/Geist-Regular.otf") format("opentype"),
+        url("../fonts/Geist/Geist-Regular.woff2") format("woff");
+    }
+
+@font-face {
+    font-family: "Geist Bold";
+    src:
+        local("Geist"),
+        url("../fonts/Geist/Geist-Bold.otf") format("opentype"),
+        url("../fonts/Geist/Geist-Bold.otf") format("woff");
+    }
+
+@font-face {
+    font-family: "Geist Mono";
+    src:
+        local("Geist"),
+        url("../fonts/Geist\ Mono/GeistMono-Regular.otf") format("opentype"),
+        url("../fonts/Geist\ Mono/GeistMono-Regular.woff2") format("woff");
+    }   
+
+b {
+    font-family: "Geist Bold";
+}
 
 hr {
     border: none;
@@ -37,12 +61,13 @@ a {
 body {
     background-color: black;
     color: white;
-    font-family: "Rubik";
+    font-family: "Geist";
     min-height: 100vh;
 }
 
 code {
     color: gold;
+    font-family: "Geist Mono";
 }
 
 pre {
