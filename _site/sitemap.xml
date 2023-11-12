@@ -25,10 +25,15 @@
 <lastmod>2023-04-29T00:00:00+01:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/</loc>
+<loc>http://localhost:4000/2023/11/08/rock-paper-scissors/</loc>
+<lastmod>2023-11-08T18:36:46+00:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/index_old/</loc>
+<loc>http://localhost:4000/blog/2023/11/12/rock-paper-scissors/</loc>
+<lastmod>2023-11-12T17:27:35+00:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/til/</loc>

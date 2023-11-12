@@ -1,4 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-06T13:57:50+00:00</updated><id>http://localhost:4000/feed.xml</id><author><name>Andrew Conlin</name></author><entry><title type="html">Links aren’t performances</title><link href="http://localhost:4000/blog/2023/04/29/links-arent-performances/" rel="alternate" type="text/html" title="Links aren’t performances" /><published>2023-04-29T00:00:00+01:00</published><updated>2023-04-29T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/04/29/links-arent-performances</id><content type="html" xml:base="http://localhost:4000/blog/2023/04/29/links-arent-performances/"><![CDATA[<p><em>“For starters, it finds that publishing a link can be a “performance” of a copyrighted work, which meant that when Linkletter linked to the world-viewable Youtube files that Proctorio had posted, he infringed on copyright.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-12T17:37:09+00:00</updated><id>http://localhost:4000/feed.xml</id><author><name>Andrew Conlin</name></author><entry><title type="html">Enhancing Rock Paper Scissors</title><link href="http://localhost:4000/blog/2023/11/12/rock-paper-scissors/" rel="alternate" type="text/html" title="Enhancing Rock Paper Scissors" /><published>2023-11-12T17:27:35+00:00</published><updated>2023-11-12T17:27:35+00:00</updated><id>http://localhost:4000/blog/2023/11/12/rock-paper-scissors</id><content type="html" xml:base="http://localhost:4000/blog/2023/11/12/rock-paper-scissors/"><![CDATA[<p>At least where I live, Rock Paper Scissors (henceforth referred to as RPS) is still the dominant way of quickly making a decision between friends. However, it is in desperate need of an update.</p>
+
+<p>In this post, I will set out the existing problems with the game, then how I aim to resolve them, and conclude with a summary of the amazing of the brand-spanking new edition.</p>
+
+<p>For the record, I am writing this post because the game is bad, not because I always lose to my girlfriend and have decided to change the rules rather than accept defeat<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<h1 id="1-the-problems">1. The problems</h1>
+<ol>
+  <li>Lack of options</li>
+  <li>Scissors picked disproportionately</li>
+  <li>General lack of whimsy</li>
+</ol>
+
+<h1 id="2-fixing-the-problems">2. Fixing the problems</h1>
+<h2 id="how-many-extra-options-should-we-add">How many extra options should we add?</h2>
+<h3 id="graph-theory">Graph theory</h3>
+<p>Before we dive in, let me give you some Graph Theory 101. First some terms:</p>
+<ul>
+  <li>vertex: a point in space</li>
+  <li>edge: connects any two points</li>
+  <li>vertices are joined with edges to create graphs</li>
+  <li>to begin with, we will have undirected graphs, where edges have no direction associated with them</li>
+</ul>
+
+<p>Therefore, to represent the current setup for RPS, we can have the following</p>
+
+<script src="/assets/js/typograms.js"></script>
+
+<script type="text/typogram">  
+.
+           o rock
+          / \ 
+         /   \
+        /     \
+ paper o-------o scissors
+.
+ </script>
+
+<p>Each possible hand is a vertex, and each edge is a game. In graph theory, a complete graph is one where every pair of vertices is connected by a unique edge. Intuitively you can see that rock, paper scissors is complete, otherwise there would be combinations that couldn’t be played against each other.</p>
+
+<p>Another concept that I now need to introduce is that of degree. The degree of a vertex is the total number of edges it is connected to. This is the second criterion that we need to fulfill: Every vertex must have the same degree. This is known as a regular graph. The exisiting RPS graph is also regular, with degree 2 (2-regular). We need to satisfy this with our new graph.</p>
+
+<p>It is now time to introduce direction to our graph, used to represent winners and losers. Here is the RPS graph with directions representing who will win each game, also known as a digraph.</p>
+
+<script type="text/typogram">
+.
+           o rock
+          ^ \ 
+         /   \
+        /     v
+ paper o <-----o scissors
+.
+</script>
+
+<p>Rock beats scissors etc. etc.</p>
+
+<p>More specifically, we want an oriented graph. There shouldn’t be any bidirectionality between vertices, which would indicate a draw.</p>
+
+<p>A complete, oriented graph is called a tournament.</p>
+
+<p>Buidling on out definition of regularity from the non-directed graphs, we have directional regularity (indegree = outdegree). A tournament where each of the vertices is regular is called a “regular tournament”. This specific type of digraph satisfies all our criteria, and any new game that we create must be regular tournament.</p>
+
+<ol>
+  <li>complete (every hand can play every hand)</li>
+  <li>regular (every hand can participate in the same number of possible games)</li>
+  <li>oriented (every game results in a winner)</li>
+  <li>indegree = outdegree for all vertices (each hand wins as many as it loses)</li>
+</ol>
+
+<p>Number of regular tournaments for numbers of nodes (even no. of nodes excluded because they have an odd degree, and therefore no regular tournaments):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Nodes</th>
+      <th style="text-align: center">Degree</th>
+      <th style="text-align: center">Regular Tournaments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">24</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">2640</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">.</td>
+      <td style="text-align: center">.</td>
+      <td style="text-align: center">.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">.</td>
+      <td style="text-align: center">.</td>
+      <td style="text-align: center">.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>as much as I would love to look at all of the possible 2640 combinations for a 7 player tournament, 5 possible hands looks like our sweetspot here, both in terms of the possible winner/loser combinations and in terms of the brain capacity of people playing the game.</p>
+
+<script type="text/typogram">
+.
+              "rock"
+         +------>o-------+  
+         |      ^ \      v
+         o-----/---\---->o
+"new #1" ^^   /     \   /|"new #2"
+         | \ /       \ / |
+         |  \         /  |
+  "paper"| / \       / \ |"scissors"
+         |/   \     /   vv
+         o<----\---/-----o
+          ^     \ /     /
+           \     /     /
+            \___/ \___/
+.
+</script>
+
+<p>This took me so long to figure out<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>It’s like she’s in my head it’s crazy <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>The notebook of a crazed madman <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Andrew Conlin</name></author><category term="blog" /><summary type="html"><![CDATA[At least where I live, Rock Paper Scissors (henceforth referred to as RPS) is still the dominant way of quickly making a decision between friends. However, it is in desperate need of an update.]]></summary></entry><entry><title type="html">Rock Paper Scissors</title><link href="http://localhost:4000/2023/11/08/rock-paper-scissors/" rel="alternate" type="text/html" title="Rock Paper Scissors" /><published>2023-11-08T18:36:46+00:00</published><updated>2023-11-08T18:36:46+00:00</updated><id>http://localhost:4000/2023/11/08/rock-paper-scissors</id><content type="html" xml:base="http://localhost:4000/2023/11/08/rock-paper-scissors/"><![CDATA[<h1 id="intro">Intro</h1>
+<h2 id="background">Background</h2>
+<p>Rock, Paper, Scissors needs an update. 
+In this post I will set out the threory behind</p>
+<h2 id="how-many-extra-options-should-we-add">How many extra options should we add?</h2>
+<h3 id="graph-theory">Graph theory</h3>
+<p>Before we dive in, let me give you some Graph Theory 101. FIrst some terms:</p>
+<ul>
+  <li>vertex: a point in space</li>
+  <li>edge: connects any two points</li>
+  <li>vertices are joined with edges to create graphs</li>
+  <li>to begin with, we will have undirected graphs, where edges have no direction associated with them</li>
+</ul>
+
+<p>Therefore, to represent the current setup for RPS, we can have the following
+        “rock” 
+           o
+          / <br />
+         /   <br />
+        /     <br />
+ paper o——-o scissors</p>
+
+<p>Each possible hand is a vertex, and each edge is a game. In graph theory, a complete graph is one where every pair of vertices is connected by a unique edge. Intuitively you can see that rock, paper scissors is complete, otherwise there would be combinations that couldn’t be played against each other.</p>
+
+<p>Another concept that I now need to introduce is that of degree. The degree of a vertex is the total number of edges it is connected to. This is the second criterion that we need to fulfill: Every vertex must have the same degree. This is known as a regular graph. The exisiting RPS graph is also regular, with degree 2 (2-regular). We need to satisfy this with our new graph.</p>
+
+<p>It is now time to introduce direction to our graph, used to represent winners and losers. Here is the RPS graph with directions representing who will win each game, also known as a digraph.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     "rock" 
+       o
+      ^ \
+     /   \
+    /     v  paper o &lt;------o scissors
+</code></pre></div></div>
+
+<p>Rock beats scissors etc. etc.</p>
+
+<p>More specifically, we want an oriented graph. There shouldn’t be any bidirectionality between vertices, which would indicate a draw.</p>
+
+<p>A complete, oriented graph is called a tournament.</p>
+
+<p>Buidling on out definition of regularity from the non-directed graphs, we have directional regularity (indegree = outdegree). A tournament where each of the vertices is regular is called a “regular tournament”. This specific type of digraph satisfies all our criteria, and any new game that we create must be regular tournament.</p>
+
+<ol>
+  <li>complete (every hand can play every hand)</li>
+  <li>regular (every hand can participate in the same number of possible games)</li>
+  <li>oriented (every game results in a winner)</li>
+  <li>indegree = outdegree for all vertices (each hand wins as many as it loses)</li>
+</ol>
+
+<p>Number of regular tournaments for numbers of nodes (even no. of nodes excluded because they have an odd degree, and therefore no regular tournaments):
+| Nodes    | Degree    | Regular Tournaments    |
+|—————- | ————— | ————— |
+| 1    | 0    | 1    |
+| 3    | 2    | 2    |
+| 5    | 4    | 24     |
+| 7    | 6    | 2640   |
+and so on…</p>
+
+<p>as much as I would love to look at all of the possible 2640 combinations for a 7 player tournament, 5 possible hands looks like our sweetspot here, both in terms of the possble winner/loser combinations and in terms of the brain capacity of people playing the game.</p>]]></content><author><name>Andrew Conlin</name></author><summary type="html"><![CDATA[Intro Background Rock, Paper, Scissors needs an update. In this post I will set out the threory behind How many extra options should we add? Graph theory Before we dive in, let me give you some Graph Theory 101. FIrst some terms: vertex: a point in space edge: connects any two points vertices are joined with edges to create graphs to begin with, we will have undirected graphs, where edges have no direction associated with them]]></summary></entry><entry><title type="html">Links aren’t performances</title><link href="http://localhost:4000/blog/2023/04/29/links-arent-performances/" rel="alternate" type="text/html" title="Links aren’t performances" /><published>2023-04-29T00:00:00+01:00</published><updated>2023-04-29T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/04/29/links-arent-performances</id><content type="html" xml:base="http://localhost:4000/blog/2023/04/29/links-arent-performances/"><![CDATA[<p><em>“For starters, it finds that publishing a link can be a “performance” of a copyrighted work, which meant that when Linkletter linked to the world-viewable Youtube files that Proctorio had posted, he infringed on copyright.</em></p>
 
 <p><em>This is a perverse, even surreal take on copyright. The court rejects Linkletter’s argument that even Youtube’s terms of service warned Proctorio that publishing world-viewable material on its site constituted permission for people to link to and watch that material.”</em></p>
 
