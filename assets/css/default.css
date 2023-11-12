@@ -94,3 +94,8 @@ img.letterboxd {
     background-color: gold;
     color: black;
 }
+
+table, th, td {
+  border: 1px solid;
+  padding: 5px;
+}|
