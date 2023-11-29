@@ -1,24 +1,28 @@
 ---
 layout: default
-title: latest posts <span style="font-size:20px;"><a href="/feed/blog.xml"><i class="fas fa-rss-square"></i></a></span>
-subtitle: all the posts, in reverse chronological. there is an atom feed above.
+title: Andrew Conlin's blog
 permalink: /
+backlink: false
 ---
 
 
+This site is designed to be kept as simple as possible.<br>
+It is pure HTML/CSS [*], which keeps things small, fast and accessible.<br>
+* I use a self-hosted instance of <a href="https://umami.is">umami</a> for analytics. It respects do-not-track signals.<br>
+--<br>
+email: <a href="mailto:andrew@andrewconl.in">andrew@andrewconl.in</a><br>
+masto: <a href="https://mastodon.scot/@andrwcnln">andrwcnln@mastodon.scot</a><br>
+github: <a href="https://github.com/andrwcnln">@andrwcnln</a><br>
+--<br>
+<a href="/til">til</a> · <a href="/feed/blog.xml">rss</a>
+<br>
 <hr>
 <ul style="list-style-type:none;margin:0;padding:0;">
   {% for post in site.posts %}
   {% assign category = post.category %}
   {% if category == 'blog' %}
     <li>
-      <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-      <div style="font-style: italic;">
-        <img src="/assets/images/write.ico" style="display: inline;height: 20px;width: 20px;">&nbsp;{{ post.date | date_to_string }}
-      </div>
-      {{ post.content | strip_html | truncatewords: 30 }}
-      <br>
-      <br>
+      <p><a href="{{ post.url }}">{{ post.title }}</a> -- {{ post.date | date_to_string }}</p>
     </li>
   {% endif %}
   {% endfor %}

@@ -2,10 +2,9 @@
 layout: default
 ---
 
-<p style="font-family:Geist;font-style:italic;">
-    <img src="/assets/images/write.ico" style="display: inline;height: 20px;width: 20px;">&nbsp;{{ page.date | date_to_string }}
-    &nbsp;
-    <img src="/assets/images/alarm.ico" style="display: inline;height: 20px;width: 20px;">&nbsp;{{ content | reading_time | pluralize: "minute" }}
+<p>
+    Posted {{ page.date | date_to_string }} to <a href="/">Andrew Conlin's blog</a><br>
+    Reading time: {{ content | reading_time | pluralize: "minute" }}
 </p>
 <hr>
 
