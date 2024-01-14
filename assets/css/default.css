@@ -39,3 +39,12 @@ div.content {
         position: relative;
     }
 }
+
+body {
+    background-color: #1a1b26;
+    color: #a9b1d6;
+}
+
+a {
+    color: #9ece6a;
+}
