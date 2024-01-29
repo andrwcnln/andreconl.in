@@ -28,8 +28,18 @@ defaults:
       permalink: til/:title/
       category: til
       layout: post
+  # weeklinks
+  - scope:
+      path: "_posts/weeklinks"
+      type: posts
+    values:
+      permalink: blog/:year/:month/:day/:title/
+      category: weeklinks
+      layout: post
+
 
 feed:
   categories: 
     - blog
     - til
+
