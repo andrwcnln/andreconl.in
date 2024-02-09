@@ -1,5 +1,5 @@
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: monospace;
 }
 
 div.container {
@@ -7,7 +7,7 @@ div.container {
 }
 
 div.content {
-    width: 40%;
+    width: 50%;
     height: auto;
     margin: 0 auto;
     position: relative;
