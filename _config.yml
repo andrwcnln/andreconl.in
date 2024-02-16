@@ -18,7 +18,7 @@ defaults:
       path: "_posts/blog"
       type: posts
     values:
-      permalink: blog/:year/:month/:day/:title/
+      permalink: blog/:year/:title/
       layout: post
   # til
   - scope:
@@ -33,7 +33,7 @@ defaults:
       path: "_posts/weeklinks"
       type: posts
     values:
-      permalink: blog/:year/:month/:day/:title/
+      permalink: weeklinks/:title/
       category: weeklinks
       layout: post
 

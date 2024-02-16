@@ -1,11 +1,9 @@
 ---
 layout: default
-title: Andrew Conlin's blog
+title: andrewconl.in
 permalink: /
 backlink: false
 ---
-
-
 This site is designed to be kept as simple as possible.<br>
 It is pure HTML/CSS [*], which keeps things small, fast and accessible.<br>
 * I use a self-hosted instance of <a href="https://umami.is">umami</a> for analytics. It respects do-not-track signals.<br>
@@ -14,41 +12,5 @@ email: <a href="mailto:andrew@andrewconl.in">andrew@andrewconl.in</a><br>
 masto: <a rel="me" href="https://mastodon.scot/@andrwcnln">andrwcnln@mastodon.scot</a><br>
 github: <a href="https://github.com/andrwcnln">@andrwcnln</a><br>
 --<br>
-<a href="/feed/blog.xml">rss</a><br>
-<br>
+<a href="/feed.xml">rss</a><br>
 <hr>
-<h2>Posts</h2>
-<ul style="list-style-type:none;margin:0;padding:0;">
-  {% for post in site.posts %}
-  {% assign category = post.category %}
-  {% if category == 'blog' %}
-    <li>
-      <p><a href="{{ post.url }}">{{ post.title }}</a> -- {{ post.date | date_to_string }}</p>
-    </li>
-  {% endif %}
-  {% endfor %}
-</ul>
-<hr>
-<h2>Weeklinks</h2>
-<ul style="list-style-type:none;margin:0;padding:0;">
-  {% for post in site.posts %}
-  {% assign category = post.category %}
-  {% if category == 'weeklinks' %}
-    <li>
-      <p><a href="{{ post.url }}">{{ post.title }}</a> -- {{ post.date | date_to_string }}</p>
-    </li>
-  {% endif %}
-  {% endfor %}
-</ul>
-<hr>
-<h2>TIL</h2>
-<ul style="list-style-type:none;margin:0;padding:0;">
-  {% for post in site.posts %}
-  {% assign category = post.category %}
-  {% if category == 'til' %}
-    <li>
-      <p><a href="{{ post.url }}">{{ post.title }}</a> -- {{ post.date | date_to_string }}</p>
-    </li>
-  {% endif %}
-  {% endfor %}
-</ul>
