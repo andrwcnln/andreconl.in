@@ -18,7 +18,7 @@ defaults:
       path: "_posts/blog"
       type: posts
     values:
-      permalink: blog/:title/
+      permalink: blog/:year/:title/
       layout: post
   # til
   - scope:
