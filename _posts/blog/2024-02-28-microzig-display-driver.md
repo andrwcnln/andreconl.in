@@ -11,7 +11,7 @@ This is where Zig comes in. I have been seeing a lot of buzz around Zig as a lan
 
 However, I wanted my hobbyist hijinx to be the sort of "dabble in a new language, try out some different things" sort of fun, rather than the looming "figure out how to create Zig executables that can run on and drive embedded systems" sort of hell. Luckily for me, some wonderful folks have done the heavy lifting in this department: [MicroZig](https://github.com/ZigEmbeddedGroup/microzig).
 
-This project is great. It is still in the early-ish stages, with full support only available for (you guessed it) the RP4020. But things are moving fast, and the project is actively developed.
+This project is great. It is still in the early-ish stages, with full support only available for (you guessed it) the RP2040. But things are moving fast, and the project is actively developed.
 
 This is exactly what I needed, so I jumped right in. Following along with the [Raspberry Pi examples](https://github.com/ZigEmbeddedGroup/microzig/tree/main/examples/raspberrypi-rp2040), I quickly had some working code for flashing some LEDs. Cool!
 
@@ -19,7 +19,7 @@ At this point, I remembered about a small OLED screen that I had, perfect for ex
 
 Now, as datasheets go, this is pretty good. We have all of the available commands, and instructions for how to write to the display RAM (for showing stuff on the screen). But how do we send these commands? This is also in the datasheet: [I2C](https://en.wikipedia.org/wiki/I%C2%B2C). There is a brief explanation in there about what the device is expecting, but I needed to do some more digging, as this is my first time dabbling directly in I2C communication.
 
-After hunting around a bit, I had another look in the [MicroZig examples](https://github.com/ZigEmbeddedGroup/microzig/tree/main/examples/raspberrypi-rp2040), and found something very useful: there is an [I2C driver](https://github.com/ZigEmbeddedGroup/microzig/blob/main/examples/raspberrypi-rp2040/src/i2c_bus_scan.zig) included as part of the RP4020 HAL. The example that they provided scans for available I2C devices, and prints their addresses over UART. This would be ideal as a starting point, if I could just read the UART. Normally, when connected to my laptop, I could just print these values via serial over USB. However, this is an [exisiting issue](https://github.com/ZigEmbeddedGroup/microzig/issues/161) in the MicroZig repo, and is currently not supported. At this point, I ordered a UART to USB adapter, and resigned to leave the project alone until it arrived.
+After hunting around a bit, I had another look in the [MicroZig examples](https://github.com/ZigEmbeddedGroup/microzig/tree/main/examples/raspberrypi-rp2040), and found something very useful: there is an [I2C driver](https://github.com/ZigEmbeddedGroup/microzig/blob/main/examples/raspberrypi-rp2040/src/i2c_bus_scan.zig) included as part of the RP2040 HAL. The example that they provided scans for available I2C devices, and prints their addresses over UART. This would be ideal as a starting point, if I could just read the UART. Normally, when connected to my laptop, I could just print these values via serial over USB. However, this is an [exisiting issue](https://github.com/ZigEmbeddedGroup/microzig/issues/161) in the MicroZig repo, and is currently not supported. At this point, I ordered a UART to USB adapter, and resigned to leave the project alone until it arrived.
 
 ...
 
