@@ -1,12 +1,10 @@
 ---
 layout: default
 ---
-<code>
 <span style="font-size: x-large;"><a href="/">~</a> > <a href="/{{page.category}}">{{page.category}}</a> > <a href="">{{page.title}}</a><br></span>
 
     {{ page.date | date: "%Y-%m-%d" }}<br>
     {{ content | reading_time | pluralize: "minute" }}
-</code>
 <hr>
 
 {{ content }}

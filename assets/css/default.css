@@ -1,5 +1,23 @@
+@font-face {
+	font-family: 'Geist';
+	src: url('/assets/fonts/Geist-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Geist Mono';
+	src: url('/assets/fonts/GeistMonoNerdFont-Regular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
-    font-family: monospace;
+    font-family: Geist, sans-serif;
+}
+
+code {
+	font-family: Geist Mono, monospace;
 }
 
 div.container {
@@ -41,23 +59,31 @@ div.content {
 }
 
 body {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #242424;
+    color: #E7D7AD;
 }
 
 pre {
-    background-color:antiquewhite;
+    background-color:#32302F;
     padding: 10px 10px 10px 10px;
     border-radius: 10px;
     white-space: pre-wrap;
     white-space: pre-wrap;
 }
 
-hr {
-    border: 2px dashed #000000;
-    border-style: none none dashed; 
-    color: transparent; 
-    background-color: transparent;
+a {
+	color: #E7D7AD;
+	text-decoration: none;
+	border-bottom: 3px solid #FABD2F;
+	border-radius: 2px;
+}
+
+a:hover {
+	color: #242424;
+	background: #FABD2F;
+	text-decoration: none;
+	border-bottom: 3px solid #FABD2F;
+	border-radius: 2px;
 }
 
 img {
@@ -66,4 +92,9 @@ img {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+::selection {
+  color: #242424;
+  background: #FABD2F;
 }
